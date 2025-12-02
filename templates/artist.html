@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>{{.Artist.Name}} - Details</title>
+    <link rel="stylesheet" href="/static/styles.css">
+
+    <style>
+        .artist-container {
+            max-width: 1100px;
+            margin: 40px auto;
+            background: #1e1e2e;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+            color: #fff;
+        }
+
+        .artist-header {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .artist-header img {
+            width: 260px;
+            height: 260px;
+            object-fit: cover;
+            border-radius: 12px;
+            border: 4px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .artist-info {
+            flex: 1;
+        }
+
+        .section {
+            margin-top: 25px;
+            padding: 15px;
+            background: #27293d;
+            border-radius: 8px;
+        }
+
+        .section h3 {
+            margin-bottom: 10px;
+            color: #ffd700;
+        }
+
+        .back-btn {
+            display: block;
+            text-align: center;
+            margin-top: 25px;
+            padding: 10px;
+            background: #2a2a40;
+            color: #fff;
+            border-radius: 8px;
+            font-weight: bold;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .back-btn:hover {
+            background: #3d3d55;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="artist-container">
+
+        <div class="artist-header">
+            <img src="{{.Artist.Image}}" alt="{{.Artist.Name}}">
+
+            <div class="artist-info">
+                <h1>{{.Artist.Name}}</h1>
+                <p><strong>First Album:</strong> {{.Artist.FirstAlbum}}</p>
+
+                {{if .Artist.Members}}
+                <p><strong>Members:</strong> {{join .Artist.Members ", "}}</p>
+                {{end}}
+            </div>
+        </div>
+
+        {{if .Locations}}
+        <div class="section">
+            <h3>Locations</h3>
+            <ul>
+                {{range .Locations}}
+                <li>{{.}}</li>
+                {{end}}
+            </ul>
+
+        </div>
+        {{end}}
+
+        {{if .Dates}}
+        <div class="section">
+            <h3>Concert Dates</h3>
+            <ul>
+                {{range .Dates}}
+                <li>{{.}}</li>
+                {{end}}
+            </ul>
+
+        </div>
+        {{end}}
+
+        {{if .Relation}}
+        <div class="section">
+            <h3>Dates → Locations</h3>
+
+            <ul style="line-height: 1.8;">
+                {{range .Relation}}
+                <li>{{.}}</li>
+                {{end}}
+            </ul>
+
+        </div>
+        {{end}}
+
+
+        <a href="/" class="back-btn">← Back to Artists</a>
+    </div>
+
+</body>
+
+</html>
