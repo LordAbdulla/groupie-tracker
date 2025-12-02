@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Groupie Tracker - Artists</title>
+  <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+  <h1>Groupie Tracker</h1>
+  <h2>Browse Artists &amp; Bands</h2>
+
+  <form method="GET" action="/" style="text-align:center; margin-bottom:25px;">
+    <input 
+      type="text" 
+      name="q" 
+      placeholder="Search artist..." 
+      class="search-box"
+      value="{{.Query}}">
+  </form>
+
+   <form method="GET" action="/" style="text-align:center; margin-bottom:25px;">
+    <select name="members" class="filter-box" onchange="this.form.submit()">
+        <option value="">Filter by members</option>
+        <option value="1" {{if eq .MembersFilter "1"}}selected{{end}}>1 Member</option>
+        <option value="2" {{if eq .MembersFilter "2"}}selected{{end}}>2 Members</option>
+        <option value="3" {{if eq .MembersFilter "3"}}selected{{end}}>3 Members</option>
+        <option value="4" {{if eq .MembersFilter "4"}}selected{{end}}>4 Members</option>
+        <option value="5" {{if eq .MembersFilter "5"}}selected{{end}}>5+ Members</option>
+    </select>
+
+    <input type="hidden" name="q" value="{{.Query}}">
+</form>
+
+
+  <div id="artists-cards">
+  {{if .Artists}}
+    {{range .Artists}}
+      <a href="/artist?id={{.ID}}" class="card-link">
+        <div class="card card-modern">
+
+          <img src="{{.Image}}" alt="{{.Name}}">
+
+          <h3>{{.Name}}</h3>
+          <h4>Band / Artist</h4>
+
+          <p class="card-meta">
+            <strong>First Album:</strong> {{.FirstAlbum}}
+          </p>
+
+          <p class="card-meta">
+            <strong>Members:</strong> {{len .Members}}
+          </p>
+
+        </div>
+      </a>
+    {{end}}
+  {{else}}
+    <div class="no-results-box">
+      <h3> No Results</h3>
+      <p>No artists match your search.</p>
+    </div>
+  {{end}}
+</div>
+
+
+</body>
+</html>
