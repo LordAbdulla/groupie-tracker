@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>{{.Title}}</title>
+  <link rel="stylesheet" href="/static/styles.css">
+  <style>
+    .error-container {
+      text-align: center;
+      margin-top: 100px;
+      color: #f0f0f0;
+    }
+
+    .error-icon {
+      font-size: 80px;
+      margin-bottom: 20px;
+      color: #ff4c4c;
+      text-shadow: 0 0 10px rgba(255,0,0,0.6);
+    }
+
+    .error-title {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+      font-weight: bold;
+    }
+
+    .error-message {
+      font-size: 1.2rem;
+      margin-bottom: 25px;
+      color: #ccc;
+    }
+
+    .back-btn {
+      display: inline-block;
+      padding: 12px 22px;
+      background-color: #ff4c4c;
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      border-radius: 10px;
+      transition: 0.25s ease;
+      box-shadow: 0 4px 15px rgba(255,0,0,0.4);
+    }
+
+    .back-btn:hover {
+      background-color: #ff6b6b;
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(255,0,0,0.6);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="error-container">
+    <div class="error-icon">⚠️</div>
+
+    <div class="error-title">{{.Title}}</div>
+    <div class="error-message">{{.Message}}</div>
+
+    <a href="/" class="back-btn">← Back to Home</a>
+  </div>
+</body>
+</html>
