@@ -25,5 +25,5 @@ The project focuses on API handling, JSON parsing, data structuring, error manag
 ##  Clone the Repository
 
 ```bash
-git clone https://github.com/<your-username>/groupie-tracker.git
+git clone https://github.com/LordAbdulla/groupie-tracker.git
 run main .
